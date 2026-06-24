@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "LabReagentes",
-    "slug": "LabReagentes",
+    "slug": "labreagente",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,13 +21,20 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.matheusivisorganization.labreagente"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-sqlite"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1e547e42-d66a-4f78-8529-ef0fa0a377dd"
+      }
+    },
+    "owner": "matheusivis-organization"
   }
 }

@@ -12,7 +12,12 @@ import {
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RouteProp } from "@react-navigation/native";
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { mascaraData, dataParaISO, dataParaBR } from "../utils/mascaraData";
+import {
+  mascaraData,
+  dataParaISO,
+  dataParaBR,
+  validarData,
+} from "../utils/mascaraData";
 import {
   inserirReagente,
   atualizarReagente,
@@ -62,8 +67,17 @@ export default function FormScreen({ navigation, route }: Props) {
       Alert.alert("Atenção", "O nome do reagente é obrigatório.");
       return;
     }
-    if (!validade.trim()) {
-      Alert.alert("Atenção", "A validade é obrigatória.");
+
+    if (!validade.trim() || validade.length < 10) {
+      Alert.alert("Atenção", "Preencha a data de validade completa.");
+      return;
+    }
+
+    if (!validarData(validade)) {
+      Alert.alert(
+        "Atenção",
+        "Data de validade inválida. Verifique o dia e mês informados.",
+      );
       return;
     }
 

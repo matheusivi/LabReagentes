@@ -32,4 +32,4 @@ Desenvolvido para a disciplina de Desenvolvimento Mobile, aplicado ao contexto d
 
 ## 🔗 Link da APK
 
-(inserir link aqui após o build)
+(https://expo.dev/accounts/matheusivis-organization/projects/labreagente/builds/6e981576-c15f-492b-9419-11ce62481524)

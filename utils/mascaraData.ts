@@ -16,3 +16,19 @@ export function dataParaBR(dataISO: string): string {
   const [ano, mes, dia] = dataISO.split("-");
   return `${dia}/${mes}/${ano}`;
 }
+
+export function validarData(dataBR: string): boolean {
+  const regex = /^\d{2}\/\d{2}\/\d{4}$/;
+  if (!regex.test(dataBR)) return false;
+
+  const [dia, mes, ano] = dataBR.split("/").map(Number);
+
+  if (mes < 1 || mes > 12) return false;
+  if (dia < 1) return false;
+  if (ano < 2000) return false;
+
+  const diasNoMes = new Date(ano, mes, 0).getDate();
+  if (dia > diasNoMes) return false;
+
+  return true;
+}
