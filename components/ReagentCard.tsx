@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Reagente } from "../types";
 import StatusBadge from "./StatusBadge";
+import { dataParaBR } from "../utils/mascaraData";
 
 interface Props {
   reagente: Reagente;
@@ -11,7 +12,11 @@ interface Props {
 
 export default function ReagentCard({ reagente, onPress, onLongPress }: Props) {
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} onLongPress={onLongPress}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={onPress}
+      onLongPress={onLongPress}
+    >
       <View style={styles.header}>
         <Text style={styles.nome} numberOfLines={1}>
           {reagente.nome}
@@ -26,7 +31,9 @@ export default function ReagentCard({ reagente, onPress, onLongPress }: Props) {
         <Text style={styles.detalhe}>
           📦 Lote: {reagente.lote || "Não informado"}
         </Text>
-        <Text style={styles.detalhe}>📅 Validade: {reagente.validade}</Text>
+        <Text style={styles.detalhe}>
+          📅 Validade: {dataParaBR(reagente.validade)}
+        </Text>
         <Text style={styles.detalhe}>
           📍 {reagente.localizacao || "Sem localização"}
         </Text>
