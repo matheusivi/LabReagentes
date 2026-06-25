@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { View, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { initDatabase } from "./database/db";
@@ -11,9 +12,20 @@ import DetailScreen from "./screens/DetailScreen";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
+  const [dbPronto, setDbPronto] = useState(false);
+
   useEffect(() => {
     initDatabase();
+    setDbPronto(true);
   }, []);
+
+  if (!dbPronto) {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator size="large" color="#0F6E56" />
+      </View>
+    );
+  }
 
   return (
     <NavigationContainer>
